@@ -114,7 +114,6 @@ body {
   z-index: 10;
   overflow-y: auto;
   background: var(--sidebar-bg);
-  /* Hapus gradient, pakai solid color sesuai palet */
 }
 
 /* Custom scrollbar */
@@ -186,6 +185,16 @@ body {
   font-size: 1.125rem;
   font-weight: 700;
   transition: 0.3s ease-in-out;
+}
+
+.profile li:hover {
+  background-color: var(--hover-bg);
+  border-radius: 50%;
+}
+.profile li:hover i {
+  color: var(--text-light);
+  background: transparent;
+  border-radius: 50%;
 }
 
 .menu {
@@ -274,13 +283,13 @@ body {
   background-color: var(--bg-dark);
   border-radius: 16px;
   padding: 1em 0;
-  border: 2 solid var(--bg-dark);
+  border: 2px solid var(--bg-dark);
   overflow: hidden;
 }
 .about-content {
   display: flex;
   flex-direction: column;
-  padding: 1em 10em;
+  padding: 1em 2em;
   align-items: start;
   width: 100%;
   padding-bottom: 2.5rem;
@@ -307,6 +316,7 @@ body {
   font-weight: 600;
   color: var(--text-light);
   background: transparent;
+  text-align: start;
 }
 
 .about-img {
@@ -345,7 +355,8 @@ body {
   flex-direction: column;
   justify-content: center;
   text-align: start;
-  background: transparent;
+  margin-bottom: 5%;
+  margin-left: 20em;
 }
 .skill-contain h2 {
   margin: 0 5%;
@@ -359,7 +370,7 @@ body {
 .card-contain {
   display: grid;
   justify-content: space-around;
-  grid-template-columns: repeat(3, 30%);
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
   margin: 1%;
   background: transparent;
   gap: 1rem;
@@ -396,29 +407,28 @@ body {
   font-weight: 700;
 }
 
-/* ========== MEDIA QUERY (MOBILE) ========== */
-@media screen and (max-width: 768px) {
+/* ========== MEDIA QUERY UNTUK TABLET (max-width: 800px) ========== */
+@media screen and (max-width: 800px) {
   .nav-links {
     display: none;
   }
+
   .hamburger-menu {
     display: block;
-    position: relative;
-    background: transparent;
-    margin-right: 20px;
     position: fixed;
     top: 14px;
     left: 15px;
+    background: transparent;
+    z-index: 1100;
   }
   .hamburger-menu i {
     color: var(--text-dark);
+    font-size: 1.6rem;
     background: transparent;
-    font-size: 1.6em;
-    border-radius: 8px;
     padding: 4px;
+    border-radius: 8px;
   }
 
-  /* Sidebar di mobile muncul dari kanan */
   .sidebar {
     position: fixed;
     right: -300px;
@@ -426,17 +436,15 @@ body {
     width: 260px;
     transition: right 0.3s ease;
     background: var(--sidebar-bg);
-    margin-top: 0;
-    overflow-y: auto;
-    height: 100%;
-    z-index: 1000;
     top: 0;
+    height: 100%;
+    z-index: 1050;
+    overflow-y: auto;
   }
   .sidebar.open {
     right: 0;
   }
 
-  /* Overlay untuk backdrop */
   .overlay {
     display: none;
     position: fixed;
@@ -445,7 +453,7 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    z-index: 1040;
   }
   .overlay.active {
     display: block;
@@ -457,14 +465,64 @@ body {
     background: transparent;
   }
 
-  /* Main content di mobile: margin kiri dihilangkan */
   .main {
-    margin-left: 0;
+    margin-left: 0 !important;
     margin-top: 80px;
     padding: 1rem;
   }
 
-  /* Sesuaikan grid card untuk mobile */
+  .home-content {
+    padding-top: 10%;
+  }
+  .home-content h1 {
+    font-size: 2rem;
+    width: 100%;
+  }
+  .home-content p {
+    font-size: 0.95rem;
+  }
+
+  .skill-contain {
+    margin-left: 0;
+  }
+  .skill-contain h2 {
+    font-size: 2rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .about {
+    margin: 4rem 0;
+    padding: 1rem;
+  }
+  .about-content h2,
+  .about-content p {
+    width: 100%;
+  }
+/* Desktop: about section flex row */
+.about-img {
+  display: flex;
+  flex-direction: row;    /* gambar di kiri, konten di kanan */
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  padding: 0 2rem;
+}
+.about-img img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.title-img {
+  flex: 1;
+}
+.text-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
   .card-contain {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -473,24 +531,250 @@ body {
     width: 100%;
   }
 
-  /* Perbaiki jarak about */
+  .title-img,
+  .text-grid {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .title-img {
+    margin-top: 8%;
+    gap: 1rem;
+  }
+  .title-img h2 {
+    font-size: 1.3rem;
+    margin-left: 0;
+    text-align: center;
+  }
+  .text-grid {
+    margin-top: 8%;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+  .text-grid h2 {
+    font-size: 1.3rem;
+    margin-left: 0;
+    text-align: center;
+  }
+  .text-grid p {
+    text-align: center;
+  }
 }
 
-@media screen and (max-width: 500;)
-{
-  .about{
+/* ========== MEDIA QUERY UNTUK TABLET (max-width: 800px) ========== */
+@media screen and (max-width: 800px) {
+  .nav-links {
     display: none;
   }
-  .about-content{
-    display: flex;
-  flex-direction: column;
-  padding: 0em;
-  align-items: start;
-  width: 100%;
-  padding-bottom: 2.5rem;
+
+  .hamburger-menu {
+    display: block;
+    position: fixed;
+    top: 14px;
+    left: 15px;
+    background: transparent;
+    z-index: 1100;
+  }
+  .hamburger-menu i {
+    color: var(--text-dark);
+    font-size: 1.6rem;
+    background: transparent;
+    padding: 4px;
+    border-radius: 8px;
+  }
+
+  .sidebar {
+    position: fixed;
+    right: -300px;
+    left: auto;
+    width: 260px;
+    transition: right 0.3s ease;
+    background: var(--sidebar-bg);
+    top: 0;
+    height: 100%;
+    z-index: 1050;
+    overflow-y: auto;
+  }
+  .sidebar.open {
+    right: 0;
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+  }
+  .overlay.active {
+    display: block;
+  }
+
+  .sidebar-wrapper {
+    padding-top: 80px;
+    width: 100%;
+    background: transparent;
+  }
+
+  .main {
+    margin-left: 0 !important;
+    margin-top: 80px;
+    padding: 1rem;
+  }
+
+  .home-content {
+    padding-top: 10%;
+  }
+  .home-content h1 {
+    font-size: 2rem;
+    width: 100%;
+  }
+  .home-content p {
+    font-size: 0.95rem;
+  }
+
+  .skill-contain {
+    margin-left: 0;
+  }
+  .skill-contain h2 {
+    font-size: 2rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .about {
+    margin: 4rem 0;
+    padding: 1rem;
+  }
+  .about-content h2,
+  .about-content p {
+    width: 100%;
+  }
+
+  /* PERBAIKAN: image di atas, text grid di bawah */
+  .about-img {
+    flex-direction: column;   /* image di atas, konten di bawah */
+    align-items: center;
+    width: 100%;
+    padding: 0;
+  }
+  .about-img img {
+    width: 12rem;
+    height: 12rem;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+  .title-img {
+    width: 100%;
+    text-align: center;
+  }
+  .title-img h2 {
+    margin-left: 0;
+    text-align: center;
+  }
+  .text-grid {
+    grid-template-columns: 1fr;   /* satu kolom untuk data diri */
+    gap: 0.8rem;
+    margin-left: 0;
+    justify-items: start;
+  }
+  .text-grid p {
+    text-align: start;
+  }
+
+  .card-contain {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .card-item {
+    width: 100%;
   }
 }
 
-  
-  
+/* ========== MEDIA QUERY UNTUK MOBILE (max-width: 768px) ========== */
+@media screen and (max-width: 768px) {
+  .home-content h1 {
+    font-size: 1.8rem;
+  }
+  .about-img {
+    flex-direction: column;
+    text-align: start;
+  }
+  .text-grid {
+    grid-template-columns:2fr 50% ;
+  }
+  .about-img img {
+    margin-bottom: 1rem;
+  }
+  .profile h2 {
+    font-size: 1rem;
+  }
+  .profile h4 {
+    font-size: 0.75rem;
+  }
+  .menu a {
+    font-size: 1rem;
+  }
 
+  /* Pastikan about-img tetap column di mobile */
+
+  
+}
+
+@media screen and (max-width: 1050px) {
+  .about-img {
+    flex-direction: column;
+    text-align: start;
+    padding-left: 5%;
+  }
+  
+  .text-grid {
+    grid-template-columns: 2fr 50%;
+  }
+  .about-img img {
+    margin-bottom: 1rem;
+  }
+  .profile h2 {
+    font-size: 1rem;
+  }
+  .profile h4 {
+    font-size: 0.75rem;
+  }
+  .menu a {
+    font-size: 1rem;
+}
+
+}
+
+@media screen and (max-width: 1440px) {
+ .about-img h2 {
+   margin-top: 1.3em;
+ } 
+}
+
+@media  screen and (max-width: 320px ) {
+  .about-img {
+    flex-direction: column;
+    text-align: start;
+  }
+  .text-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-img img {
+    margin-bottom: 1rem;
+  }
+  .profile h2 {
+    font-size: 1rem;
+  }
+  .profile h4 {
+    font-size: 0.75rem;
+  }
+  .menu a {
+    font-size: 1rem;
+  }
+  
+}

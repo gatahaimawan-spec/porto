@@ -31,14 +31,13 @@ document.addEventListener('DOMContentLoaded', function() {
   // Toggle saat hamburger diklik
   if (hamburger) {
     hamburger.addEventListener('click', function(e) {
-      e.stopPropagation();
       if (sidebar.classList.contains('open')) {
         closeSidebar();
       } else {
         openSidebar();
       }
     });
-  }
+  } 
   
   // Tutup sidebar saat overlay diklik
   if (overlay) {
