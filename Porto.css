@@ -778,3 +778,17 @@ body {
   }
   
 }
+
+@media screen and (max-width: 8000px) {
+.home-content{
+  padding-top: 8%;
+}
+
+  }
+
+@media screen and (max-width: 5000px) {
+  .home-content{
+    padding-top: 10%;
+  }
+  
+    }
