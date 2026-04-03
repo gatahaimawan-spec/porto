@@ -633,14 +633,16 @@ body {
   .card-item {
     width: 100%;
   }
-
+ .project-background{
+  margin-left: 0em !important;
+ }
   /* PROJECT responsif (baru) */
   .project-contain {
-    margin-left: 1rem !important;
+    margin-left: 1rem;
     margin-right: 1rem;
   }
   .project-item {
-    margin-left: 1rem !important;
+    margin-left: 1rem ;
     margin-right: 1rem;
   }
   .project-item p {
@@ -760,10 +762,9 @@ body {
   .project-contain {
     flex-direction: column;
     margin-bottom: 1em;
-    margin-left: 22em;
   }
   .project-item {
-    margin-left: 22em;
+    margin-left: 2em;
     margin-right: 2em;
   }
   .project-item p {
@@ -777,5 +778,11 @@ body {
     width: 100%;
     height: auto;
     object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 5000px) {
+  .project-background{
+    margin-left: 20em;
   }
 }
